@@ -4,6 +4,40 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{darkgreen}{rgb}{0,0.4,0}
+
+\lstdefinelanguage{JavaScript}{
+    keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+    keywordstyle=\color{blue}\bfseries,
+    ndkeywords={class, export, boolean, throw, implements, import, this},
+    ndkeywordstyle=\color{darkgray}\bfseries,
+    identifierstyle=\color{black},
+    sensitive=false,
+    comment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    commentstyle=\color{darkgreen}\ttfamily,
+    stringstyle=\color{red}\ttfamily,
+    morestring=[b]',
+    morestring=[b]"
+}
+
+\lstset{
+    language=JavaScript,
+    backgroundcolor=\color{lightgray},
+    extendedchars=true,
+    basicstyle=\footnotesize\ttfamily,
+    showstringspaces=false,
+    showspaces=false,
+    tabsize=2,
+    breaklines=true,
+    showtabs=false,
+    captionpos=b
+}
 
 \usepackage{polski}
 \usepackage[polish]{babel}
@@ -18,5 +52,56 @@
 
 \section{Wstęp}
 \subsection{Model danych}
+Dane w MongoDB są przechowywane jako zbiór \emph{par klucz-wartość}, które są pogrupowane w \emph{dokumenty}. Wiele dokumentów tworzy \emph{kolekcję}, a zbiór kolekcji to właściwa \emph{baza}. Warto zauważyć, że ten sposób przechowywania danych nie wymaga, żeby kolekcje przechowywały dane o jakiejś określonej strukturze - każdy z jego elementów może być zupełnie inny.
+
+Takie rozwiązanie sprawia, że mapowanie obiektów w językach programowania na odpowiadające im dokumenty jest bardzo proste, zwłaszcza w przypadku używanego w tym tutorialu JavaScriptu.
+
+\subsubsection{Zalety}
+\begin{itemize}
+\item Bazę tworzy się łatwo
+\item Kolekcje nie narzucają określonej struktury danych w dokumencie
+\end{itemize}
+
+\subsubsection{Wady}
+\begin{itemize}
+\item Trzeba dobrze zastanowić się nad strukturą danych przechowywanych w bazie. Żle zaprojektowana baza będzie działać dużo wolniej niż relacyjna!
+\end{itemize}
+
+\subsubsection{Dokument}
+Dane znajdujące się w dokumencie są zapisywane jako obiekty w formacie BSON (Binary JSON), który definiuje nie tylko typy prymitywne jak lliczba czy tekst, ale również tablice czy... obiekty:
+
+\begin{lstlisting}
+// users/ayende
+{
+   "type": "user",
+   "name": "ayende"
+}
+
+// blogs/1
+{
+    "type": "blog",
+    "users": ["users/ayende"],
+    "name": "Ayende @ Rahien",
+    "tags": [".NET", "Architecture", "Databases"]
+}
+// posts/1
+{
+    "blog": "blogs/1",
+    "title": "RavenDB",
+    "content": "... content ...",
+    "categories": ["Raven", "NoSQL"]
+    "tags" : ["RavenDB", "Announcements"],
+    "comments": [
+        { "content": "Great News" }
+    ]
+}
+\end{lstlisting}
+
+Dzięki zastosowaniu takiego rozwiązania dobrze zaprojektowana baza MongoDB pozwala na niezwykle szybki dostęp do danych. O ile trzymamy wszystkie dane, do których się odwołujemy w jednym miejscu, wystarczy odwołać się do jednego miejsca w bazie, zamiast odczytywać po kawałku z różnych miejsc, jak to często jest w bazach relacyjnych.
+
+\section{Przykłady}
+\subsection{Dobry}
+\subsection{Zły}
+\subsection{Jeszcze jeden?}
 
 \end{document}
