@@ -109,6 +109,7 @@
         \item Ogromne marnotrawstwo pamięci w przypadku dużych baz
       \end{itemize}
       \item Duplikacja danych
+      \item Niecodzienna składnia porównań w zapytaniach
     \end{itemize}
   \end{frame}
 
@@ -122,6 +123,52 @@
 
   \begin{frame}
     \frametitle{CRUD}
+    \begin{itemize}
+      \item Select
+      \lstinputlisting{listings/crud-select.js}
+      \item Insert
+      \lstinputlisting{listings/crud-insert.js}
+      \item Update
+      \lstinputlisting{listings/crud-update.js}
+      \item Remove
+      \lstinputlisting{listings/crud-remove.js}
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Filtrowanie dokumentów}
+    \begin{itemize}
+      \item \texttt{\{ klucz: 'wartość' \}} - 'jest równe'
+      \item \texttt{\{ \$operator: argument(y) \}}
+      \begin{itemize}
+        \item \texttt{\{ \$lt: 20 \}} - 'mniejsze od'
+        \item \texttt{\$gt, \$lte, \$gte, \$ne} - inne porównania
+        \item \texttt{\{ \$in: [ 'A', 'B' ] \}} - 'należy do zbioru'
+        \item \texttt{\$nin} - 'nie należy do zbioru'
+      \end{itemize}
+      \item Operatory logiczne:
+      \begin{itemize}
+        \item \texttt{\$and, \$or, \$nor, \$not}
+        \item W przypadku podania kilku warunków wszystkie muszą być spełnione
+      \end{itemize}
+      \item Do stringów - wyrażenia regularne: \texttt{\{ name: /.*a.*/ \}}
+    \end{itemize}
+    \lstinputlisting{listings/find-basic.js}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Filtrowanie dokumentów - tablice i subdokumenty}
+    \begin{itemize}
+      \item Tablice
+      \begin{itemize}
+        \item \texttt{\{ tablica: [ 'A', 'B' ] \}} - dokładne dopasowanie
+        \item \texttt{\{ tablica: 'A' \}} - czy tablica zawiera element 'A'?
+        \item \texttt{\{ 'tablica.2': 'A' \}} - czy trzeci element tablicy to 'A'? (indeksowanie od 0)
+        \item \texttt{\{ \$elemMatch: warunek \}} - wybieranie niektórych elementów tablicy
+      \end{itemize}
+      \item \texttt{\{ 'kot.kolor': 'czarny' \}} - sprawdzanie pola subdokumentu
+      \lstinputlisting{listings/find-array-struct.js}
+    \end{itemize}
   \end{frame}
 
   \begin{frame}
