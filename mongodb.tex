@@ -7,6 +7,14 @@
 \usepackage{listings}
 \usepackage{color}
 
+\hypersetup{
+  colorlinks = true,
+  linkcolor = blue,
+  urlcolor = blue,
+  citecolor = blue,
+  anchorcolor = blue
+}
+
 \definecolor{lightgray}{rgb}{.9,.9,.9}
 \definecolor{darkgray}{rgb}{.4,.4,.4}
 \definecolor{darkgreen}{rgb}{0,0.4,0}
@@ -30,7 +38,7 @@
     language=JavaScript,
     backgroundcolor=\color{lightgray},
     extendedchars=true,
-    basicstyle=\footnotesize\ttfamily,
+    basicstyle=\tiny\ttfamily,
     showstringspaces=false,
     showspaces=false,
     tabsize=2,
@@ -66,8 +74,10 @@
 
   \begin{frame}
     \frametitle{Dokument}
-    Dane znajdujące się w dokumencie są zapisywane jako obiekty w formacie BSON (Binary JSON), który definiuje nie tylko typy prymitywne jak lliczba czy tekst, ale również tablice czy podobiekty:
+    Dane znajdujące się w dokumencie są zapisywane jako obiekty w formacie BSON (Binary JSON), który definiuje nie tylko typy prymitywne jak liczba czy tekst, ale również tablice czy podobiekty:
     \lstinputlisting{listings/document.js}
+
+    Więcej o formacie BSON: \url{http://bsonspec.org/}
   \end{frame}
 
   \begin{frame}
@@ -77,11 +87,12 @@
       \begin{itemize}
         \item Odwołanie do nieistniejącej kolekcji tworzy ją automatycznie
       \end{itemize}
-      \item Brak określonej struktury danych w dokumencie!
+      \item Brak określonej struktury danych w dokumencie
       \item Intuicyjna struktura danych w bazie
       \begin{itemize}
-        \item Tablice, słowniki
+        \item Tablice, słowniki, nawet wyrażenia regularne
       \end{itemize}
+      \item Konsola z interpreterem JavaScriptu
     \end{itemize}
   \end{frame}
 
@@ -125,6 +136,7 @@
 
   \begin{frame}
     \frametitle{MongoDB w NodeJS}
+    \lstinputlisting{listings/node.js}
   \end{frame}
 
   \begin{frame}
