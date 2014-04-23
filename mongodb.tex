@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass{beamer}
 
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -44,64 +44,64 @@
 \usepackage[utf8]{inputenc}
 
 \author{Dawid Czech, Marcin Radomski}
-\title{MongoDB}
+\title{}
 
 \begin{document}
-\maketitle
-\newpage
+  \begin{frame}
+    \includegraphics[width=\textwidth,keepaspectratio]{img/logo.png}
+    \maketitle
+  \end{frame}
 
-\section{Wstęp}
-\subsection{Model danych}
-Dane w MongoDB są przechowywane jako zbiór \emph{par klucz-wartość}, które są pogrupowane w \emph{dokumenty}. Wiele dokumentów tworzy \emph{kolekcję}, a zbiór kolekcji to właściwa \emph{baza}. Warto zauważyć, że ten sposób przechowywania danych nie wymaga, żeby kolekcje przechowywały dane o jakiejś określonej strukturze - każdy z jego elementów może być zupełnie inny.
+  \begin{frame}
+    \frametitle{Model danych}
+    \begin{columns}
+      \column{.6\textwidth}
+      \includegraphics[scale=0.5]{img/db-structure.png}
 
-Takie rozwiązanie sprawia, że mapowanie obiektów w językach programowania na odpowiadające im dokumenty jest bardzo proste, zwłaszcza w przypadku używanego w tym tutorialu JavaScriptu.
+      \column{.4\textwidth}
+      Dane w MongoDB są przechowywane jako zbiór \emph{par klucz-wartość}, pogrupowanych w \emph{dokumenty}. Wiele dokumentów tworzy \emph{kolekcję}, a zbiór kolekcji to właściwa \emph{baza}.
+    \end{columns}
+  \end{frame}
 
-\subsubsection{Zalety}
-\begin{itemize}
-\item Bazę tworzy się łatwo
-\item Kolekcje nie narzucają określonej struktury danych w dokumencie
-\end{itemize}
+  \begin{frame}
+    \frametitle{Zalety}
+    \begin{itemize}
+      \item Łatwość tworzenia bazy
+      \item Brak określonej struktury danych w dokumencie!
+    \end{itemize}
+  \end{frame}
 
-\subsubsection{Wady}
-\begin{itemize}
-\item Trzeba dobrze zastanowić się nad strukturą danych przechowywanych w bazie. Żle zaprojektowana baza będzie działać dużo wolniej niż relacyjna!
-\end{itemize}
+  \begin{frame}
+    \frametitle{Wady}
+    \begin{itemize}
+      \item Nie nadaje się do każdego rodzaju danych
+      \item Brak określonej struktury danych w dokumencie
+    \end{itemize}
+  \end{frame}
 
-\subsubsection{Dokument}
-Dane znajdujące się w dokumencie są zapisywane jako obiekty w formacie BSON (Binary JSON), który definiuje nie tylko typy prymitywne jak lliczba czy tekst, ale również tablice czy... obiekty:
+  \begin{frame}
+    \frametitle{Dokument}
+    Dane znajdujące się w dokumencie są zapisywane jako obiekty w formacie BSON (Binary JSON), który definiuje nie tylko typy prymitywne jak lliczba czy tekst, ale również tablice czy podobiekty:
+    \lstinputlisting{listings/document.js}
+  \end{frame}
 
-\begin{lstlisting}
-// users/ayende
-{
-   "type": "user",
-   "name": "ayende"
-}
+  \begin{frame}
+    \frametitle{Dobry przykład}
+  \end{frame}
 
-// blogs/1
-{
-    "type": "blog",
-    "users": ["users/ayende"],
-    "name": "Ayende @ Rahien",
-    "tags": [".NET", "Architecture", "Databases"]
-}
-// posts/1
-{
-    "blog": "blogs/1",
-    "title": "RavenDB",
-    "content": "... content ...",
-    "categories": ["Raven", "NoSQL"]
-    "tags" : ["RavenDB", "Announcements"],
-    "comments": [
-        { "content": "Great News" }
-    ]
-}
-\end{lstlisting}
+  \begin{frame}
+    \frametitle{Zły przykład}
+  \end{frame}
 
-Dzięki zastosowaniu takiego rozwiązania dobrze zaprojektowana baza MongoDB pozwala na niezwykle szybki dostęp do danych. O ile trzymamy wszystkie dane, do których się odwołujemy w jednym miejscu, wystarczy odwołać się do jednego miejsca w bazie, zamiast odczytywać po kawałku z różnych miejsc, jak to często jest w bazach relacyjnych.
+  \begin{frame}
+    \frametitle{MongoDB w NodeJS}
+  \end{frame}
 
-\section{Przykłady}
-\subsection{Dobry}
-\subsection{Zły}
-\subsection{Jeszcze jeden?}
+  \begin{frame}
+    \frametitle{Instalacja: Linux}
+    Wystarczy zainstalować odpowiednią paczkę z repozytorium. Dla Ubuntu sprowadza się to do wykonania:
+
+    \lstinputlisting{listings/install-linux.sh}
+  \end{frame}
 
 \end{document}
