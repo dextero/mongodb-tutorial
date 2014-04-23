@@ -43,13 +43,14 @@
 \usepackage[polish]{babel}
 \usepackage[utf8]{inputenc}
 
-\author{Dawid Czech, Marcin Radomski}
-\title{}
-
 \begin{document}
+
   \begin{frame}
-    \includegraphics[width=\textwidth,keepaspectratio]{img/logo.png}
-    \maketitle
+    \begin{center}
+      \includegraphics[width=\textwidth,keepaspectratio]{img/logo.png}
+
+      Dawid Czech, Marcin Radomski
+    \end{center}
   \end{frame}
 
   \begin{frame}
@@ -64,10 +65,23 @@
   \end{frame}
 
   \begin{frame}
+    \frametitle{Dokument}
+    Dane znajdujące się w dokumencie są zapisywane jako obiekty w formacie BSON (Binary JSON), który definiuje nie tylko typy prymitywne jak lliczba czy tekst, ale również tablice czy podobiekty:
+    \lstinputlisting{listings/document.js}
+  \end{frame}
+
+  \begin{frame}
     \frametitle{Zalety}
     \begin{itemize}
       \item Łatwość tworzenia bazy
+      \begin{itemize}
+        \item Odwołanie do nieistniejącej kolekcji tworzy ją automatycznie
+      \end{itemize}
       \item Brak określonej struktury danych w dokumencie!
+      \item Intuicyjna struktura danych w bazie
+      \begin{itemize}
+        \item Tablice, słowniki
+      \end{itemize}
     \end{itemize}
   \end{frame}
 
@@ -75,14 +89,16 @@
     \frametitle{Wady}
     \begin{itemize}
       \item Nie nadaje się do każdego rodzaju danych
-      \item Brak określonej struktury danych w dokumencie
+      \item Brak określonej struktury danych w dokumencie...
+      \begin{itemize}
+        \item Konieczność używania indeksów
+      \end{itemize}
+      \item Konieczność przechowywania nazw pól w każdym dokumencie
+      \begin{itemize}
+        \item Ogromne marnotrawstwo pamięci w przypadku dużych baz
+      \end{itemize}
+      \item Duplikacja danych
     \end{itemize}
-  \end{frame}
-
-  \begin{frame}
-    \frametitle{Dokument}
-    Dane znajdujące się w dokumencie są zapisywane jako obiekty w formacie BSON (Binary JSON), który definiuje nie tylko typy prymitywne jak lliczba czy tekst, ale również tablice czy podobiekty:
-    \lstinputlisting{listings/document.js}
   \end{frame}
 
   \begin{frame}
@@ -94,6 +110,20 @@
   \end{frame}
 
   \begin{frame}
+    \frametitle{CRUD}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Aggregation Framework}
+    Aggregation Framework, będący częścią MongoDB pozwala na wykonywanie dowolnych operacji typu map-reduce.
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{SQL vs MongoDB}
+    \includegraphics[width=\textwidth,keepaspectratio]{img/mysql_vs_mongodb.jpg}
+  \end{frame}
+
+  \begin{frame}
     \frametitle{MongoDB w NodeJS}
   \end{frame}
 
@@ -102,6 +132,10 @@
     Wystarczy zainstalować odpowiednią paczkę z repozytorium. Dla Ubuntu sprowadza się to do wykonania:
 
     \lstinputlisting{listings/install-linux.sh}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Instalacja: Windows}
   \end{frame}
 
 \end{document}
