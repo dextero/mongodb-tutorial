@@ -20,7 +20,7 @@
 \definecolor{darkgreen}{rgb}{0,0.4,0}
 
 \lstdefinelanguage{JavaScript}{
-    keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+    keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, \$lt, \$gt, \$lte, \$gte, \$ne, \$in, \$nin, \$and, \$or, \$nor, \$not, \$elemMatch, \$set, \$unset, \$rename, \$inc, \$mul, \$min, \$max, \$push, \$pop, \$pull},
     keywordstyle=\color{blue}\bfseries,
     ndkeywords={class, export, boolean, throw, implements, import, this},
     ndkeywordstyle=\color{darkgray}\bfseries,
@@ -124,13 +124,13 @@
   \begin{frame}
     \frametitle{CRUD}
     \begin{itemize}
-      \item Select
+      \item Select: \texttt{db.kolekcja.find(FILTR)}
       \lstinputlisting{listings/crud-select.js}
-      \item Insert
+      \item Insert: \texttt{db.kolekcja.insert(DOKUMENT)}
       \lstinputlisting{listings/crud-insert.js}
-      \item Update
+      \item Update: \texttt{db.kolekcja.update(FILTR, OPERACJA)}
       \lstinputlisting{listings/crud-update.js}
-      \item Remove
+      \item Remove: \texttt{db.kolekcja.remove(FILTR)}
       \lstinputlisting{listings/crud-remove.js}
     \end{itemize}
   \end{frame}
@@ -149,7 +149,7 @@
       \item Operatory logiczne:
       \begin{itemize}
         \item \texttt{\$and, \$or, \$nor, \$not}
-        \item W przypadku podania kilku warunków wszystkie muszą być spełnione
+        \item W przypadku podania kilku warunków wszystkie muszą być spełnione (AND)
       \end{itemize}
       \item Do stringów - wyrażenia regularne: \texttt{\{ name: /.*a.*/ \}}
     \end{itemize}
@@ -172,8 +172,23 @@
   \end{frame}
 
   \begin{frame}
-    \frametitle{Aggregation Framework}
-    Aggregation Framework, będący częścią MongoDB pozwala na wykonywanie dowolnych operacji typu map-reduce.
+    \frametitle{Modyfikacja dokumentów}
+    Dostępne operacje:
+    \begin{itemize}
+      \item \texttt{\$rename, \$set} - zmiana klucza/wartości
+      \item \texttt{\$unset} - usunięcie pola
+      \item \texttt{\$inc, \$mul}
+      \item \texttt{\$min, \$max} - zmienia wartość tylko, jeśli poprzednia jest większa/mniejsza od podanej
+      \item \texttt{\$push} - dodaje element do tablicy
+      \item \texttt{\$pop} - usuwa pierwszy lub ostatni element tablicy
+      \item \texttt{\$pull} - usuwa wszystkie elementy spełniające podany warunek
+      \item Wiele innych: \url{http://docs.mongodb.org/manual/reference/operator/update/}
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Agregacja}
+    MongoDB pozwala na wykonywanie operacji agregacji za pomocą map-reduce lub Aggregation Framework.
   \end{frame}
 
   \begin{frame}

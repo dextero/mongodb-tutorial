@@ -1,6 +1,6 @@
-// posts/1
+// posts_1
 {
-  "blog": "blogs/1",
+  "blog": "blogs_1",
   "title": "RavenDB",
   "content": "... content ...",
   "categories": ["Raven", "NoSQL"],
