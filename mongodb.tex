@@ -142,16 +142,13 @@
       \item \texttt{\{ klucz: 'wartość' \}} - 'jest równe'
       \item \texttt{\{ \$operator: argument(y) \}}
       \begin{itemize}
+        \item \texttt{\{ \$exists: 1 \}} - można podać 0, żeby wybrać elementy nie zawierające klucza
         \item \texttt{\{ \$lt: 20 \}} - 'mniejsze od'
         \item \texttt{\$gt, \$lte, \$gte, \$ne} - inne porównania
         \item \texttt{\{ \$in: [ 'A', 'B' ] \}} - 'należy do zbioru'
         \item \texttt{\$nin} - 'nie należy do zbioru'
       \end{itemize}
-      \item Operatory logiczne:
-      \begin{itemize}
-        \item \texttt{\$and, \$or, \$nor, \$not}
-        \item W przypadku podania kilku warunków wszystkie muszą być spełnione (AND)
-      \end{itemize}
+      \item Operatory logiczne: \texttt{\$and, \$or, \$nor, \$not}
       \item Do stringów - wyrażenia regularne: \texttt{\{ name: /.*a.*/ \}}
     \end{itemize}
     \lstinputlisting{listings/find-basic.js}
@@ -173,6 +170,19 @@
   \end{frame}
 
   \begin{frame}
+    \frametitle{Operacje na wynikach wyszukiwania}
+    \begin{itemize}
+      \item \texttt{db.users.find().sort(\{ klucz: kierunek \})} - gdzie kierunek to -1 lub 1
+      \item \texttt{db.users.find().count()}
+      \item \texttt{db.users.find().limit(5)}
+      \begin{itemize}
+        \item \texttt{db.users.findOne()} - tylko pierwszy wynik
+        \item \texttt{db.users.find().limit(5).skip(10)}
+      \end{itemize}
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}
     \frametitle{Modyfikacja dokumentów}
     Dostępne operacje:
     \begin{itemize}
@@ -189,7 +199,27 @@
 
   \begin{frame}
     \frametitle{Agregacja}
-    MongoDB pozwala na wykonywanie operacji agregacji za pomocą map-reduce lub Aggregation Framework.
+    MongoDB pozwala na wykonywanie operacji na danych za pomocą:
+    \begin{itemize}
+      \item Aggregation Framework
+      \begin{itemize}
+        \item Pozwala na wykonanie operacji określonych za pomocą predefiniowanych operatorów: \url{http://docs.mongodb.org/manual/reference/operator/aggregation/}
+        \item Rozmiar danych wyjściowych ograniczony do 16MB
+      \end{itemize}
+      \item Map-reduce
+      \begin{itemize}
+        \item Operacje opisuje się w JavaScripcie - bardziej uniwersalne
+        \item Brak ograniczenia na wielkość wyniku
+        \item Mniej wydajne od Aggregation Framework
+      \end{itemize}
+      \item Predefiniowane operacje agregacji
+      \begin{itemize}
+        \item \texttt{count()}
+        \item \texttt{distinct(POLE)}
+        \item \texttt{group(...)}
+        \item Szczegóły: \url{http://docs.mongodb.org/manual/core/single-purpose-aggregation/}
+      \end{itemize}
+    \end{itemize}
   \end{frame}
 
   \begin{frame}
@@ -199,7 +229,9 @@
 
   \begin{frame}
     \frametitle{MongoDB w NodeJS}
+    Używanie MongoDB w NodeJS nie różni się zbytnio od wykonywania operacji z konsoli:
     \lstinputlisting{listings/node.js}
+    \url{http://mongodb.github.io/node-mongodb-native/}
   \end{frame}
 
   \begin{frame}
