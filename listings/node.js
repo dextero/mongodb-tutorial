@@ -1,24 +1,21 @@
-var MongoClient = require('mongodb').MongoClient;
+  var MongoClient = require('mongodb').MongoClient
+    , format = require('util').format;
 
-MongoClient.connect("mongodb://localhost:27017/exampleDb",
-                    function(err, db) {
-  if(err) { return console.dir(err); }
+  MongoClient.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
+    if(err) throw err;
 
-  db.collection('test',
-                function(err, collection) {});
-  db.collection('test',
-                {strict:true},
-                function(err, collection) {});
+    var collection = db.collection('test_insert');
+    collection.insert({a:2}, function(err, docs) {
 
-  db.createCollection('test', {w:1}, function(err, collection) {
-    collection.insert(doc2, {w:1}, function(err, result) {
-      collection.update(
-        { mykey: 2 },
-        { $push: {
-            docs: {doc2:1}
-        } },
-        {w:1},
-        function(err, result) {});
+      collection.count(function(err, count) {
+        console.log(format("count = %s", count));
+      });
+
+      // Locate all the entries using find
+      collection.find().toArray(function(err, results) {
+        console.dir(results);
+        // Let's close the db
+        db.close();
+      });
     });
-  });
-});
+  })
