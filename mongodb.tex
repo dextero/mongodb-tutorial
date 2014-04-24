@@ -115,7 +115,15 @@
   \end{frame}
 
   \begin{frame}
-    \frametitle{Dobry przykład}
+    \frametitle{Przykład prawidłowego zastosowania}
+	MongoDB bardzo dobrze nadaje się do zastosowań, w których dla każdego obiektu potrzebny jest inny rodzaj przechowywanych danych. Dzieje się tak, ponieważ każdy obiekt jest osobnym dokumentem i ma swój własny schemat (w przeciwieństwie do tabel SQL). Baza produktów na sklepowych półkach jest tutaj bardzo dobrym przykładem:
+	\begin{columns}
+	  \column{.42\textwidth}
+      \lstinputlisting{listings/good-example.js}
+
+      \column{.58\textwidth}
+	  \includegraphics[scale=0.53]{img/table.png}
+	\end{columns}
   \end{frame}
 
   \begin{frame}
