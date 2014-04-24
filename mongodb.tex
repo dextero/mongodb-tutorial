@@ -127,7 +127,16 @@
   \end{frame}
 
   \begin{frame}
-    \frametitle{Zły przykład}
+    \frametitle{Przykład nieprawidłowego zastosowania}
+	MongoDB nie należy używać w przypadkach, gdzie istnieje dużo powiązań i relacji, ponieważ system ten nie obsługuje joinów. Dobrym przykładem na złe użycie MongoDB jest drzewo genealogiczne:
+	\begin{columns}
+      \column{.4\textwidth}
+	  \includegraphics[scale=0.6]{img/bad-example1.png}
+      \column{.6\textwidth}
+	  \includegraphics[scale=0.6]{img/bad-example2.png}
+	\end{columns}
+	
+	W MongoDB bardzo ciężko uzyskać informacje z takiej bazy (np. lista kuzynów), natomiast w SQL można wykonać prosty join i otrzymujemy te dane.
   \end{frame}
 
   \begin{frame}
