@@ -103,6 +103,7 @@
       \item Brak określonej struktury danych w dokumencie...
       \begin{itemize}
         \item Konieczność używania indeksów
+		\item Łatwość popełnienia błędu
       \end{itemize}
       \item Konieczność przechowywania nazw pól w każdym dokumencie
       \begin{itemize}
@@ -210,6 +211,11 @@
 
   \begin{frame}
     \frametitle{Instalacja: Windows}
+	Tutaj jest to nieco bardziej skomplikowane, bo należy pobrać instalator dostępny pod adresem \url{https://www.mongodb.org/downloads}, uruchomić i przejść wszystkie kroki oraz w przypadku używania systemu Windows 7 lub Windows Server 2008 R2 należy również doinstalować poprawkę \url{http://support.microsoft.com/kb/2731284}
+	
+	Aby móc uruchomić bazę danych należy wcześniej utworzyć folder do przechowywania danych. Domyślną ścieżką jest \emph{C:$\backslash$data$\backslash$db} katalog możemy utworzyć z poziomu wiersza poleceń:
+	
+	 \lstinputlisting{listings/data.bat}
   \end{frame}
 
 \end{document}
