@@ -81,6 +81,10 @@ def get_tweets(request):
         })
 
     args = {
+        'beg': beg,
+        'end': end,
+        'limit': limit,
+        'skip': skip,
         'tweet_count': tweet_count,
         'tweets': preprocessed_tweets[::-1]
     }

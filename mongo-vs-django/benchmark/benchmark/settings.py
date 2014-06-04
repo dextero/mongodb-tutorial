@@ -49,7 +49,11 @@ MIDDLEWARE_CLASSES = (
 )
 
 TEMPLATE_DIRS = (
+<<<<<<< HEAD
     os.path.join(PROJECT_ROOT, 'orm/templates/'),
+=======
+    os.path.join(BASE_DIR, 'orm/templates'),
+>>>>>>> 6d84086315144cf6b48f57b18af8fdc1199e77f7
 )
 
 ROOT_URLCONF = 'benchmark.urls'
@@ -85,3 +89,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static') ]
