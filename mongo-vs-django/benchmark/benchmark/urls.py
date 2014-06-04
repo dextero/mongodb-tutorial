@@ -13,9 +13,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'orm.views.user_login'),
     url(r'^tweets/', 'orm.views.get_tweets'),
-<<<<<<< HEAD
 	url(r'^register/$', 'orm.views.register', name='register'),
-)
-=======
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
->>>>>>> 6d84086315144cf6b48f57b18af8fdc1199e77f7

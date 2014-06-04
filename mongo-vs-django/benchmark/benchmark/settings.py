@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__name__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -49,11 +48,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 TEMPLATE_DIRS = (
-<<<<<<< HEAD
-    os.path.join(PROJECT_ROOT, 'orm/templates/'),
-=======
     os.path.join(BASE_DIR, 'orm/templates'),
->>>>>>> 6d84086315144cf6b48f57b18af8fdc1199e77f7
 )
 
 ROOT_URLCONF = 'benchmark.urls'
