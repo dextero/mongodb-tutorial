@@ -11,5 +11,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', 'orm.views.user_login'),
     url(r'^tweets/', 'orm.views.get_tweets'),
+	url(r'^register/$', 'orm.views.register', name='register'),
 )

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__name__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -48,7 +49,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 TEMPLATE_DIRS = (
-    '/home/dex/studia/db2/mongodb-tutorial/mongo-vs-django/benchmark/orm/templates',
+    os.path.join(PROJECT_ROOT, 'orm/templates/'),
 )
 
 ROOT_URLCONF = 'benchmark.urls'
