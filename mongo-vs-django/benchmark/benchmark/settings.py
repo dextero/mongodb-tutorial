@@ -48,7 +48,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 TEMPLATE_DIRS = (
-    '/home/dex/studia/db2/mongodb-tutorial/mongo-vs-django/benchmark/orm/templates',
+    os.path.join(BASE_DIR, 'orm/templates'),
 )
 
 ROOT_URLCONF = 'benchmark.urls'
@@ -84,3 +84,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static') ]
